@@ -30,6 +30,7 @@
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:ButtonField CommandName="EditCustomer" Text="Edit" ControlStyle-CssClass="btn-grid a-l" />
+                        <asp:ButtonField CommandName="RemoveCustomer" Text="Remove" ControlStyle-CssClass="btn-grid a-l" />
                         <asp:ButtonField CommandName="SelectCustomer" Text="Select" ControlStyle-CssClass="btn-grid a-l" />
                     </Columns>
                 </asp:GridView>
@@ -70,7 +71,8 @@
                         <asp:BoundField DataField="Name" HeaderText="Name" />
                         <asp:BoundField DataField="Email" HeaderText="Email" />
                         <asp:BoundField DataField="ContactNumber" HeaderText="Number" />
-                        <asp:ButtonField CommandName="EditCustomer" Text="Edit" ControlStyle-CssClass="btn-grid a-l" />
+                        <asp:ButtonField CommandName="EditContact" Text="Edit" ControlStyle-CssClass="btn-grid a-l" />
+                        <asp:ButtonField CommandName="RemoveContact" Text="Remove" ControlStyle-CssClass="btn-grid a-l" />
                     </Columns>
                 </asp:GridView>
             </div>

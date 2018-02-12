@@ -31,7 +31,7 @@ public partial class _Default : System.Web.UI.Page
         catch (Exception ex) { lblError.Text = "Error: " + ex.Message; }
     }
 
-    protected void gvCustomers_RowCommand(object sender, GridViewCommandEventArgs e) //Edit / Select Customer
+    protected void gvCustomers_RowCommand(object sender, GridViewCommandEventArgs e) //Edit / Select / Remove Customer
     {
         try
         {
@@ -52,6 +52,12 @@ public partial class _Default : System.Web.UI.Page
                 gvContacts.Visible = true;
                 btnConBack_Click(sender, e);
                 divContactsArea.Visible = true;
+            }
+            if (e.CommandName == "RemoveCustomer")
+            {
+                _Datalayer.Customers.DeleteOnSubmit(_cust);
+                _Datalayer.SubmitChanges();
+                btnCustBack_Click(sender, e);
             }
         }
         catch (Exception ex) { lblError.Text = "Error: " + ex.Message; }
@@ -112,20 +118,26 @@ public partial class _Default : System.Web.UI.Page
         catch (Exception ex) { lblError.Text = "Error: " + ex.Message; }
     }
 
-    protected void gvContacts_RowCommand(object sender, GridViewCommandEventArgs e) //Edit Contact
+    protected void gvContacts_RowCommand(object sender, GridViewCommandEventArgs e) //Edit /Remove Contact
     {
         try
         {
             CustomerContact _con = _Datalayer.CustomerContacts.First(c => c.ID.ToString() == gvContacts.DataKeys[Convert.ToInt32(e.CommandArgument)]["ID"].ToString());
             hidCon.Value = _con.ID.ToString();
 
-            if (e.CommandName == "EditCustomer")
+            if (e.CommandName == "EditContact")
             {
                 divCon.Visible = true;
                 txtConEmail.Text = _con.Email;
                 txtConName.Text = _con.Name;
                 txtConNo.Text = _con.ContactNumber;
                 lblContact.Text = "Edit Contact";
+            }
+            if (e.CommandName == "RemoveContact")
+            {
+                _Datalayer.CustomerContacts.DeleteOnSubmit(_con);
+                _Datalayer.SubmitChanges();
+                btnConBack_Click(sender, e);
             }
         }
         catch (Exception ex) { lblError.Text = "Error: " + ex.Message; }
