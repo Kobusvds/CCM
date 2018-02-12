@@ -43,7 +43,7 @@
                     <div class="card-body a-l">
                         Name
                         <asp:TextBox ID="txtCustName" runat="server" CssClass="form-control form-control-sm s-2 mb-2" />
-                        Latituse
+                        Latitude
                         <asp:TextBox ID="txtCustLat" runat="server" CssClass="form-control form-control-sm s-2 mb-2" />
                         Longitude
                         <asp:TextBox ID="txtCustLong" runat="server" CssClass="form-control form-control-sm s-2" />
